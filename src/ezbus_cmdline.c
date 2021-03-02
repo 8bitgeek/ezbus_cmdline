@@ -21,10 +21,23 @@
 *****************************************************************************/
 #include <ezbus_cmdline.h>
 
-extern void ezbus_udp_cmdline_setup( ezbus_cmdline_t* cmdline, int argc, char* argv[] )
+extern int ezbus_cmdline_set_opt(ezbus_cmdline_t* cmdline,int v)
 {
-    memset(cmdline,0,sizeof(ezbus_cmdline_t));
+    cmdline->opt = v;
+    return cmdline->opt;
+}
 
-    cmdline->argv = argv;
-    cmdline->argc = argc;
+extern int ezbus_cmdline_get_opt(ezbus_cmdline_t* cmdline)
+{
+    return cmdline->opt;
+}
+
+extern int ezbus_cmdline_get_argc(ezbus_cmdline_t* cmdline)
+{
+    return cmdline->argc;
+}
+
+extern char** ezbus_cmdline_get_argv(ezbus_cmdline_t* cmdline)
+{
+    return cmdline->argv;
 }

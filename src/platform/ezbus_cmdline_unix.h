@@ -27,19 +27,14 @@
 extern "C" {
 #endif
 
-typedef struct _ezbus_cmline_unix
-{
-    const char*     serial_device;
-    int             serial_baud;
-    const char*     host;
-    int             port;
-    uint32_t        address;
-} ezbus_cmdline_unix_t;
+extern const char*  ezbus_cmdline_unix_get_serial_device(ezbus_cmdline_t* cmdline);
+extern int          ezbus_cmdline_unix_get_serial_baud  (ezbus_cmdline_t* cmdline);
+extern const char*  ezbus_cmdline_unix_get_host         (ezbus_cmdline_t* cmdline);
+extern int          ezbus_cmdline_unix_get_port         (ezbus_cmdline_t* cmdline);
+extern uint32_t     ezbus_cmdline_unix_get_address      (ezbus_cmdline_t* cmdline);
+extern void         ezbus_cmdline_unix_set_address      (ezbus_cmdline_t* cmdline,uint32_t address);
 
-extern int ezbus_cmdline_unix_setup(
-                                ezbus_cmdline_t* ezbus_cmdline, 
-                                ezbus_cmdline_unix_t* ezbus_cmdline_unix 
-                                );
+#define ezbus_platform_port_is_udp() (ezbus_cmdline_unix_get_serial_device(ezbus_platform.cmdline)[0] == '\0')
 
 #ifdef __cplusplus
 }

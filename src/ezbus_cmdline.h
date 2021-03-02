@@ -37,19 +37,14 @@ typedef struct cmdline
     int     opt;
     int     argc;
     char**  argv;
-    void*   platform;
+    void*   private;
 } ezbus_cmdline_t;
 
-extern char *optarg;
-extern int optind, opterr, optopt;
-
-#define ezbus_cmdline_set_opt(cmdline,v)    ((cmdline)->opt=(v))
-#define ezbus_cmdline_get_opt(cmdline)      (cmdline)->opt
-#define ezbus_cmdline_get_argc(cmdline)     (cmdline)->argc
-#define ezbus_cmdline_get_argv(cmdline)     (cmdline)->argv
-#define ezbus_cmdline_get_platform(cmdline) (cmdline)->platform
-
-extern void ezbus_cmdline_setup( ezbus_cmdline_t* cmdline, int argc, char* argv[] );
+extern int      ezbus_cmdline_setup         (ezbus_cmdline_t* cmdline, int argc, char* argv[]);
+extern int      ezbus_cmdline_set_opt       (ezbus_cmdline_t* ezbus_cmdline,int v);
+extern int      ezbus_cmdline_get_opt       (ezbus_cmdline_t* ezbus_cmdline);
+extern int      ezbus_cmdline_get_argc      (ezbus_cmdline_t* ezbus_cmdline);
+extern char**   ezbus_cmdline_get_argv      (ezbus_cmdline_t* ezbus_cmdline);
 
 #ifdef __cplusplus
 }

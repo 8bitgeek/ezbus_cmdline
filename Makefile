@@ -39,10 +39,9 @@ LFLAGS = -Wl,-Map=$(TARGET).map
 
 INCLUDE =  -I ./
 INCLUDE += -I ./src
-INCLUDE += -I ./platform
+INCLUDE += -I ./src/platform
 
 C_SRC  += src/ezbus_cmdline.c
-C_SRC  += platform/ezbus_cmdline_unix.c
 
 # Object files to build.
 OBJS  = $(AS_SRC:.S=.o)
